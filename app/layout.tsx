@@ -3,6 +3,8 @@ import { GeistSans } from "geist/font/sans";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import CursorSpotlight from "@/components/CursorSpotlight";
+import ScrollIndicator from "@/components/ScrollIndicator";
+import { ThemeProvider } from "@/contexts/ThemeContext";
 
 export const metadata: Metadata = {
   title: "Khashayar Azadpour - Software Engineer & Data Professional",
@@ -25,9 +27,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={GeistSans.variable}>
       <body className="antialiased">
-        <CursorSpotlight />
-        <Navbar />
-        {children}
+        <ThemeProvider>
+          <CursorSpotlight />
+          <ScrollIndicator />
+          <Navbar />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

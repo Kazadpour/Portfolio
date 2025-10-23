@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const works = [
   {
@@ -40,46 +41,80 @@ const works = [
   },
 ];
 
-const BrowserMockup = ({ image, title }: { image: string; title: string }) => (
-  <div className="relative w-full">
+const BrowserMockup = ({
+  image,
+  title,
+  isLight,
+}: {
+  image: string;
+  title: string;
+  isLight: boolean;
+}) => (
+  <div
+    className="relative w-full"
+    style={{ borderRadius: "12px", overflow: "hidden" }}
+  >
     {/* Browser chrome */}
-    <div className="bg-neutral-900 rounded-t-xl border border-neutral-800 p-3">
+    <div className={`p-3 ${isLight ? "bg-gray-200" : "bg-neutral-900"}`}>
       <div className="flex items-center gap-2">
         <div className="flex gap-1.5">
           <div className="w-3 h-3 rounded-full bg-red-500/80"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500/80"></div>
           <div className="w-3 h-3 rounded-full bg-green-500/80"></div>
         </div>
-        <div className="flex-1 bg-neutral-800 rounded px-3 py-1 text-xs text-neutral-400 ml-2">
+        <div
+          className={`flex-1 rounded px-3 py-1 text-xs ml-2 ${
+            isLight
+              ? "bg-gray-100 text-gray-600"
+              : "bg-neutral-800 text-neutral-400"
+          }`}
+        >
           {title}
         </div>
       </div>
     </div>
     {/* Browser content */}
-    <div className="relative aspect-[16/10] bg-neutral-950 border-x border-b border-neutral-800 rounded-b-xl overflow-hidden">
+    <div
+      className={`relative aspect-[16/10] ${
+        isLight ? "bg-white" : "bg-neutral-950"
+      }`}
+    >
       <Image src={image} alt={title} fill className="object-cover object-top" />
     </div>
   </div>
 );
 
-const IPadMockup = ({ image, title }: { image: string; title: string }) => (
-  <div className="relative w-full max-w-2xl mx-auto">
+const IPadMockup = ({
+  image,
+  title,
+  isLight,
+}: {
+  image: string;
+  title: string;
+  isLight: boolean;
+}) => (
+  <div
+    className="relative w-full max-w-2xl mx-auto"
+    style={{ borderRadius: "24px", overflow: "hidden" }}
+  >
     {/* iPad frame */}
-    <div className="bg-neutral-900 rounded-3xl p-4 border border-neutral-800">
+    <div className={`p-4 ${isLight ? "bg-gray-200" : "bg-neutral-900"}`}>
       {/* iPad screen */}
-      <div className="relative aspect-[4/3] bg-neutral-950 rounded-2xl overflow-hidden border border-neutral-800">
-        <Image
-          src={image}
-          alt={title}
-          fill
-          className="object-contain"
-        />
+      <div
+        className={`relative aspect-[4/3] rounded-2xl overflow-hidden ${
+          isLight ? "bg-white" : "bg-neutral-950"
+        }`}
+      >
+        <Image src={image} alt={title} fill className="object-contain" />
       </div>
     </div>
   </div>
 );
 
 export default function SelectedWorks() {
+  const { theme } = useTheme();
+  const isLight = theme === "light";
+
   return (
     <section className="min-h-screen px-6 py-20">
       <div className="max-w-7xl mx-auto">
@@ -90,16 +125,24 @@ export default function SelectedWorks() {
           viewport={{ once: true }}
           className="mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2
+            className={`text-4xl md:text-5xl font-bold mb-4 ${
+              isLight ? "text-black" : "text-white"
+            }`}
+          >
             Selected Works
           </h2>
-          <p className="text-neutral-400 text-lg max-w-2xl">
+          <p
+            className={`text-lg max-w-2xl ${
+              isLight ? "text-gray-700" : "text-neutral-400"
+            }`}
+          >
             A curated showcase of impactful projects spanning enterprise
             systems, data engineering, and web applications.
           </p>
         </motion.div>
 
-        <div className="space-y-16">
+        <div className="space-y-16 ">
           {works.map((work, index) => (
             <motion.div
               key={work.id}
@@ -107,12 +150,24 @@ export default function SelectedWorks() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.2 }}
               viewport={{ once: true }}
-              className="bg-neutral-900 rounded-3xl p-8 md:p-12 border border-neutral-800 overflow-visible"
-              style={{
-                boxShadow:
-                  "0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
-                perspective: "2500px",
-              }}
+              className={`rounded-3xl p-8 md:p-12 border overflow-visible ${
+                isLight
+                  ? "bg-white border-gray-200"
+                  : "bg-neutral-900 border-neutral-800"
+              }`}
+              style={
+                isLight
+                  ? {
+                      boxShadow:
+                        "0 10px 40px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(0, 0, 0, 0.03)",
+                      perspective: "2500px",
+                    }
+                  : {
+                      boxShadow:
+                        "0 10px 40px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+                      perspective: "2500px",
+                    }
+              }
             >
               <div className="grid lg:grid-cols-2 gap-12 items-center overflow-visible">
                 {/* Project Info */}
@@ -121,7 +176,11 @@ export default function SelectedWorks() {
                     {work.tags.map((tag) => (
                       <span
                         key={tag}
-                        className="text-xs px-3 py-1 rounded-full bg-neutral-900 text-neutral-400 border border-neutral-800"
+                        className={`text-xs px-3 py-1 rounded-full border ${
+                          isLight
+                            ? "bg-gray-100 text-gray-600 border-gray-300"
+                            : "bg-neutral-900 text-neutral-400 border-neutral-800"
+                        }`}
                       >
                         {tag}
                       </span>
@@ -149,21 +208,46 @@ export default function SelectedWorks() {
                       )}
                     </div>
                   )}
-                  <h3 className="text-3xl font-bold mb-4">{work.title}</h3>
-                  <p className="text-neutral-400 text-lg mb-6">
+                  <h3
+                    className={`text-3xl font-bold mb-4 ${
+                      isLight ? "text-gray-800" : "text-white"
+                    }`}
+                  >
+                    {work.title}
+                  </h3>
+                  <p
+                    className={`text-lg mb-6 ${
+                      isLight ? "text-gray-700" : "text-neutral-400"
+                    }`}
+                  >
                     {work.description}
                   </p>
-                  <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.98 }}>
-                    <Link
-                      href={work.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white font-medium"
-                      style={{
-                        background: "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(39, 39, 42, 1))",
-                        boxShadow:
-                          "0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
-                      }}
+                  <Link
+                    href={work.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <motion.span
+                      className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium ${
+                        isLight ? "text-black" : "text-white"
+                      }`}
+                      style={
+                        isLight
+                          ? {
+                              background:
+                                "linear-gradient(to top, rgba(230, 230, 230, 1), rgba(255, 255, 255, 1))",
+                              boxShadow:
+                                "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(0, 0, 0, 0.05)",
+                            }
+                          : {
+                              background:
+                                "linear-gradient(to top, rgba(0, 0, 0, 1), rgba(39, 39, 42, 1))",
+                              boxShadow:
+                                "0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+                            }
+                      }
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.98 }}
                     >
                       View Project
                       <svg
@@ -179,8 +263,8 @@ export default function SelectedWorks() {
                           d="M14 5l7 7m0 0l-7 7m7-7H3"
                         />
                       </svg>
-                    </Link>
-                  </motion.div>
+                    </motion.span>
+                  </Link>
                 </div>
 
                 {/* Device Mockup */}
@@ -211,12 +295,22 @@ export default function SelectedWorks() {
                     transformStyle: "preserve-3d",
                     boxShadow:
                       "0 40px 100px rgba(0, 0, 0, 0.7), 0 20px 50px rgba(0, 0, 0, 0.5)",
+                    borderRadius: "25px",
+                    overflow: "hidden",
                   }}
                 >
                   {work.type === "browser" ? (
-                    <BrowserMockup image={work.image} title={work.title} />
+                    <BrowserMockup
+                      image={work.image}
+                      title={work.title}
+                      isLight={isLight}
+                    />
                   ) : (
-                    <IPadMockup image={work.image} title={work.title} />
+                    <IPadMockup
+                      image={work.image}
+                      title={work.title}
+                      isLight={isLight}
+                    />
                   )}
                 </motion.div>
               </div>

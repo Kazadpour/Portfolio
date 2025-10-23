@@ -1,0 +1,11 @@
+* text=auto eol=lf
+
+# Images/binaries keep original bytes
+*.png -text
+*.jpg -text
+*.jpeg -text
+*.gif -text
+*.svg -text
+*.ico -text
+*.pdf -text
+
