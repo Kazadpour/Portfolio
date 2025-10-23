@@ -19,7 +19,7 @@ const notes: Note[] = [
   {
     id: "1",
     title: "Ultimate guide to the App Router in Next.js 13",
-    coverImage: "/images/image%2059.png",
+    coverImage: "/images/image-59.png",
     date: "23rd Oct 2025",
     readTime: "7 min read",
     category: "Dev",
@@ -28,7 +28,7 @@ const notes: Note[] = [
   {
     id: "2",
     title: "Ultimate guide to the App Router in Next.js 13",
-    coverImage: "/images/Note%20Banner.png",
+    coverImage: "/images/note-banner.png",
     date: "23rd Oct 2025",
     readTime: "7 min read",
     category: "Design",
