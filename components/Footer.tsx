@@ -19,16 +19,19 @@ const socialLinks = [
     name: "GitHub",
     href: "https://github.com/Kazadpour",
     icon: GithubIcon,
+    external: true,
   },
   {
     name: "LinkedIn",
     href: "https://www.linkedin.com/in/khashayar-azadpour/",
     icon: LinkedInIcon,
+    external: true,
   },
   {
     name: "Email",
-    href: "mailto:kazadpdour25@gmail.com",
+    href: "/contact",
     icon: MailIcon,
+    external: false,
   },
 ];
 
@@ -105,12 +108,15 @@ export default function Footer() {
             <div className="flex gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
+                const Component = social.external ? motion.a : motion(Link);
                 return (
-                  <motion.a
+                  <Component
                     key={social.name}
                     href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    {...(social.external && {
+                      target: "_blank",
+                      rel: "noopener noreferrer",
+                    })}
                     className={`p-3 rounded-lg transition-colors ${
                       isLight
                         ? "bg-gray-100 hover:bg-gray-200"
@@ -146,7 +152,7 @@ export default function Footer() {
                     <Icon
                       className={`w-6 h-6 ${isLight ? "" : "invert"}`}
                     />
-                  </motion.a>
+                  </Component>
                 );
               })}
             </div>

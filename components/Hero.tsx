@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import {
   GithubIcon,
   LinkedInIcon,
@@ -99,26 +100,7 @@ export default function Hero() {
               See my resume
             </motion.a>
 
-            <motion.a
-              href="mailto:kazadpdour25@gmail.com"
-              className={`w-full sm:w-52 px-8 py-4 rounded-xl font-medium text-center ${
-                isLight ? "text-black" : "text-neutral-950"
-              }`}
-              style={
-                isLight
-                  ? {
-                      background:
-                        "linear-gradient(to top, rgba(230, 230, 230, 1), rgba(255, 255, 255, 1))",
-                      boxShadow:
-                        "0 10px 30px -5px rgba(0, 0, 0, 0.25), 0 8px 15px -6px rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.3)",
-                    }
-                  : {
-                      background:
-                        "linear-gradient(to top, rgba(39, 39, 42, 1), rgba(115, 115, 115, 1))",
-                      boxShadow:
-                        "0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)",
-                    }
-              }
+            <motion.div
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.98 }}
               initial={{ opacity: 0, y: 20 }}
@@ -129,8 +111,30 @@ export default function Hero() {
                 scale: { duration: 0.2 },
               }}
             >
-              Get in touch
-            </motion.a>
+              <Link
+                href="/contact"
+                className={`block w-full sm:w-52 px-8 py-4 rounded-xl font-medium text-center ${
+                  isLight ? "text-black" : "text-neutral-950"
+                }`}
+                style={
+                  isLight
+                    ? {
+                        background:
+                          "linear-gradient(to top, rgba(230, 230, 230, 1), rgba(255, 255, 255, 1))",
+                        boxShadow:
+                          "0 10px 30px -5px rgba(0, 0, 0, 0.25), 0 8px 15px -6px rgba(0, 0, 0, 0.15), inset 0 1px 0 0 rgba(255, 255, 255, 0.3)",
+                      }
+                    : {
+                        background:
+                          "linear-gradient(to top, rgba(39, 39, 42, 1), rgba(115, 115, 115, 1))",
+                        boxShadow:
+                          "0 10px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 0 rgba(255, 255, 255, 0.1)",
+                      }
+                }
+              >
+                Get in touch
+              </Link>
+            </motion.div>
           </div>
 
           <div className="flex gap-4 mb-12">

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import { useTheme } from "@/contexts/ThemeContext";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -17,12 +18,18 @@ const sections: Section[] = [
 ];
 
 export default function ScrollIndicator() {
+  const pathname = usePathname();
   const [activeSection, setActiveSection] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
   const { theme } = useTheme();
   const isLight = theme === "light";
 
   useEffect(() => {
+    // Only run scroll tracking on homepage
+    if (pathname !== "/") {
+      return;
+    }
+
     let scrollTimeout: NodeJS.Timeout;
 
     const handleScroll = () => {
@@ -65,7 +72,7 @@ export default function ScrollIndicator() {
       window.removeEventListener("scroll", handleScroll);
       clearTimeout(scrollTimeout);
     };
-  }, []);
+  }, [pathname]);
 
   const scrollToSection = (index: number) => {
     const sectionId = sections[index].id;
@@ -84,6 +91,11 @@ export default function ScrollIndicator() {
       setTimeout(() => setActiveSection(index), 100);
     }
   };
+
+  // Only show scroll indicator on the homepage
+  if (pathname !== "/") {
+    return null;
+  }
 
   return (
     <div

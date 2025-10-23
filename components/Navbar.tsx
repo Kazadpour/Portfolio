@@ -11,6 +11,7 @@ const navLinks = [
   { name: "Projects", href: "/projects" },
   { name: "Tech Stack", href: "/tech-stack" },
   { name: "Books", href: "/books" },
+  { name: "Notebook", href: "/notebook" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -27,15 +28,15 @@ export default function Navbar() {
       transition={{ duration: 0.5 }}
     >
       <div
-        className={`mx-auto w-full max-w-7xl backdrop-blur-xl rounded-2xl px-20 py-3 transition-colors ${
+        className={`mx-auto w-full max-w-7xl backdrop-blur-md rounded-2xl px-20 py-3 transition-colors ${
           isLight
-            ? "bg-white/40 border border-black/10"
-            : "bg-black/40 border border-white/10"
+            ? "bg-white/10 border border-black/5"
+            : "bg-black/10 border border-white/5"
         }`}
         style={{
           boxShadow: isLight
-            ? "0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(0, 0, 0, 0.05)"
-            : "0 8px 32px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1)",
+            ? "0 4px 16px rgba(0, 0, 0, 0.05), inset 0 1px 0 rgba(0, 0, 0, 0.03)"
+            : "0 4px 16px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
           maskImage:
             "linear-gradient(to right, transparent, black 10%, black 90%, transparent)",
           WebkitMaskImage:

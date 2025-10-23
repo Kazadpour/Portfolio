@@ -18,7 +18,8 @@
       "Bash(gh --version:*)",
       "Bash(gh auth:*)",
       "Bash(gh repo create:*)",
-      "Bash(git push:*)"
+      "Bash(git push:*)",
+      "Bash(copy \"E:\\Development\\Portfolio\\images\\Square Portrait.png\" \"E:\\Development\\Portfolio\\public\\images\\Square Portrait.png\")"
     ],
     "deny": [],
     "ask": []
