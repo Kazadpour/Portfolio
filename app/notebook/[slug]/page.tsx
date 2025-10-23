@@ -13,7 +13,7 @@ const notesData: Record<string, any> = {
     title: "Ultimate guide to the App Router in Next.js 13",
     date: "23rd Oct 2025",
     readTime: "7 min read",
-    coverImage: "/images/image 59.png",
+    coverImage: "/images/image%2059.png",
     content: [
       {
         type: "text",
@@ -61,7 +61,7 @@ const notesData: Record<string, any> = {
     title: "Ultimate guide to Design Systems",
     date: "23rd Oct 2025",
     readTime: "7 min read",
-    coverImage: "/images/Note Banner.png",
+    coverImage: "/images/Note%20Banner.png",
     content: [
       {
         type: "text",
