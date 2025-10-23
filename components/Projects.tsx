@@ -12,7 +12,7 @@ const works = [
     description: "ML-powered web app for formatting data objects",
     type: "browser" as const,
     image: "/images/ObjectFormatter Screenshot.png",
-    link: "https://www.objectformatter.com/",
+    link: "/projects/object-formatter",
     tags: ["React", "Node.js", "ML"],
     logo: "/images/ObjectFormatter Logo.svg",
     secondaryLogo: null,
@@ -23,18 +23,18 @@ const works = [
     description: "Automated code quality & compliance tool",
     type: "browser" as const,
     image: "/images/Crimson Inspector Screenshot.png",
-    link: "https://github.com/Kazadpour/LD_Crimson_Inspector",
+    link: "/projects/ld-crimson-inspector",
     tags: ["Python", "DevOps", "CI/CD"],
     logo: "/images/LondonDrugs.png",
     secondaryLogo: null,
   },
   {
     id: 3,
-    title: "Azure Fabric Data Pipelines",
+    title: "Microsoft Fabric Data Pipeline",
     description: "Scalable data ingestion & ETL workflows",
     type: "ipad" as const,
     image: "/images/MS Fabric Screenshot.png",
-    link: "#",
+    link: "/projects/microsoft-fabric-pipeline",
     tags: ["Azure", "Databricks", "ETL"],
     logo: "/images/MS Fabric Logo.png",
     secondaryLogo: "/images/Microsoft Logo.jpg",
@@ -221,8 +221,6 @@ export default function Projects() {
                   </p>
                   <Link
                     href={work.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
                   >
                     <motion.span
                       className={`inline-flex items-center gap-2 px-6 py-3 rounded-lg font-medium ${
