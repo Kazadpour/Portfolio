@@ -218,43 +218,44 @@ export default function Hero() {
               />
             </motion.a>
 
-            <motion.a
-              href="mailto:kazadpdour25@gmail.com"
-              className={`p-3 rounded-lg transition-colors ${
-                isLight
-                  ? "bg-white hover:bg-gray-100"
-                  : "bg-neutral-950 hover:bg-neutral-800"
-              }`}
-              style={
-                isLight
-                  ? {
-                      boxShadow:
-                        "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(0, 0, 0, 0.05)",
-                    }
-                  : {
-                      boxShadow:
-                        "0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
-                    }
-              }
-              whileHover={
-                isLight
-                  ? {
-                      boxShadow:
-                        "0 8px 25px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(0, 0, 0, 0.08)",
-                      scale: 1.05,
-                    }
-                  : {
-                      boxShadow:
-                        "0 8px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08)",
-                      scale: 1.05,
-                    }
-              }
-              whileTap={{ scale: 0.95 }}
-            >
-              <MailIcon
-                className={`w-6 h-6 ${isLight ? "" : "brightness-200"}`}
-              />
-            </motion.a>
+            <Link href="/contact">
+              <motion.div
+                className={`p-3 rounded-lg transition-colors ${
+                  isLight
+                    ? "bg-white hover:bg-gray-100"
+                    : "bg-neutral-950 hover:bg-neutral-800"
+                }`}
+                style={
+                  isLight
+                    ? {
+                        boxShadow:
+                          "0 4px 15px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(0, 0, 0, 0.05)",
+                      }
+                    : {
+                        boxShadow:
+                          "0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.05)",
+                      }
+                }
+                whileHover={
+                  isLight
+                    ? {
+                        boxShadow:
+                          "0 8px 25px rgba(0, 0, 0, 0.25), inset 0 1px 0 rgba(0, 0, 0, 0.08)",
+                        scale: 1.05,
+                      }
+                    : {
+                        boxShadow:
+                          "0 8px 20px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.08)",
+                        scale: 1.05,
+                      }
+                }
+                whileTap={{ scale: 0.95 }}
+              >
+                <MailIcon
+                  className={`w-6 h-6 ${isLight ? "" : "brightness-200"}`}
+                />
+              </motion.div>
+            </Link>
           </div>
 
           <motion.div
