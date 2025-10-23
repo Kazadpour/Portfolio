@@ -66,7 +66,7 @@ export default function Hero() {
 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             <motion.a
-              href="/resume.pdf"
+              href="https://www.linkedin.com/in/khashayar-azadpour/"
               target="_blank"
               rel="noopener noreferrer"
               className={`w-full sm:w-52 px-8 py-4 rounded-xl font-medium text-center ${
@@ -97,7 +97,7 @@ export default function Hero() {
                 scale: { duration: 0.2 },
               }}
             >
-              See my resume
+              View my LinkedIn
             </motion.a>
 
             <motion.div
