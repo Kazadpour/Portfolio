@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import CursorSpotlight from "@/components/CursorSpotlight";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { Analytics } from "@vercel/analytics/next";
 
 export const metadata: Metadata = {
   title: "Khashayar Azadpour - Software Engineer & Data Professional",
@@ -33,6 +34,7 @@ export default function RootLayout({
           <Navbar />
           {children}
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   );
