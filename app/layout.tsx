@@ -6,6 +6,7 @@ import CursorSpotlight from "@/components/CursorSpotlight";
 import ScrollIndicator from "@/components/ScrollIndicator";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 export const metadata: Metadata = {
   title: "Khashayar Azadpour - Software Engineer & Data Professional",
@@ -35,6 +36,7 @@ export default function RootLayout({
           {children}
         </ThemeProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
