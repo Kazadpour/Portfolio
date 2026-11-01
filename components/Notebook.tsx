@@ -34,6 +34,15 @@ const notes: Note[] = [
     category: "Design",
     slug: "design-systems-guide",
   },
+  {
+    id: "3",
+    title: "Designing guardrails for AI: a layered approach",
+    coverImage: "/images/note-banner.png",
+    date: "1st Nov 2026",
+    readTime: "7 min read",
+    category: "Design",
+    slug: "ai-guardrails",
+  },
 ];
 
 // Group notes by category
