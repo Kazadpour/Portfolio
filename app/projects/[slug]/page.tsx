@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -163,7 +163,7 @@ export default function ProjectPage() {
         <div className="max-w-4xl mx-auto text-center">
           <h1 className="text-4xl font-bold mb-4">Project not found</h1>
           <p className="text-gray-400 mb-8">
-            The project you're looking for doesn't exist.
+            The project you&apos;re looking for doesn&apos;t exist.
           </p>
           <Link
             href="/projects"

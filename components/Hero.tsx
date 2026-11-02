@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import {
@@ -47,7 +47,7 @@ export default function Hero() {
             }`}
           >
             <span className={isLight ? "text-gray-500" : "text-neutral-400"}>
-              Hi, I'm
+              Hi, I&apos;m
             </span>{" "}
             <span className={isLight ? "text-black" : "text-white"}>
               Khashayar

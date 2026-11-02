@@ -1,10 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { GithubIcon, LinkedInIcon, MailIcon } from "./icons/CustomIcons";
 import { useTheme } from "@/contexts/ThemeContext";
+
+const MotionLink = motion.create(Link);
 
 const navLinks = [
   { name: "About", href: "/about" },
@@ -65,7 +67,7 @@ export default function Footer() {
                 isLight ? "text-black" : "text-neutral-400"
               }`}
             >
-              "Building the future, one line of code at a time."
+              &quot;Building the future, one line of code at a time.&quot;
             </p>
           </div>
 
@@ -108,7 +110,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {socialLinks.map((social) => {
                 const Icon = social.icon;
-                const Component = social.external ? motion.a : motion(Link);
+                const Component = social.external ? motion.a : MotionLink;
                 return (
                   <Component
                     key={social.name}

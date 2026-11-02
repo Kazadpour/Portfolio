@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -44,11 +44,11 @@ export default function About() {
                   isLight ? "text-black" : "text-gray-400"
                 }`}
               >
-                Hey, I'm Khashayar Azadpour. I'm a software engineer who loves
-                building things that actually make a difference — whether that's
+                Hey, I&apos;m Khashayar Azadpour. I&apos;m a software engineer who loves
+                building things that actually make a difference — whether that&apos;s
                 a data pipeline that runs smoother, a tool that saves hours of
                 manual work, or a clean, modern interface that just feels right.
-                I'm naturally curious and always learning something new, from
+                I&apos;m naturally curious and always learning something new, from
                 backend systems to UI design. I like things that are fast,
                 efficient, and well thought out — and I try to bring that same
                 mindset into both my work and my personal projects.
@@ -76,7 +76,7 @@ export default function About() {
                 easier for IT teams. On the side, I enjoy working on my own
                 ideas — from AI-powered websites to small apps — where I get to
                 experiment with new tech and creative design approaches. For me,
-                coding isn't just a job — it's a way of thinking, solving
+                coding isn&apos;t just a job — it&apos;s a way of thinking, solving
                 problems, and expressing ideas.
               </p>
             </div>
@@ -94,12 +94,12 @@ export default function About() {
                   isLight ? "text-black" : "text-gray-400"
                 }`}
               >
-                I've been lucky to work on some really interesting projects. I
+                I&apos;ve been lucky to work on some really interesting projects. I
                 helped roll out Dynamics 365 Store Commerce across dozens of
                 stores, built data integration pipelines that bring together
                 real-time e-commerce insights, and created tools like LD Crimson
                 Inspector, which helps teams analyze system logs faster. Outside
-                of work, I've built personal apps and websites, explored
+                of work, I&apos;ve built personal apps and websites, explored
                 AI-based ideas, and even started designing my own portfolio and
                 brand. Every project — big or small — has taught me something
                 new about technology, teamwork, and how to turn an idea into
@@ -177,7 +177,7 @@ export default function About() {
                   isLight ? "text-black" : "text-gray-400"
                 }`}
               >
-                Let's build something great,
+                Let&apos;s build something great,
               </p>
               <Image
                 src="/images/Signature White.png"

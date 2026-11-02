@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useState } from "react";
 
@@ -82,7 +82,7 @@ export default function Contact() {
               isLight ? "text-neutral-600" : "text-neutral-400"
             }`}
           >
-            Let's build something awesome
+            Let&apos;s build something awesome
           </p>
         </motion.div>
 

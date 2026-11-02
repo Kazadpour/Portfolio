@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -26,22 +26,40 @@ const notes: Note[] = [
     slug: "nextjs-app-router-guide",
   },
   {
-    id: "2",
-    title: "Ultimate guide to the App Router in Next.js 13",
-    coverImage: "/images/note-banner.png",
-    date: "23rd Oct 2025",
-    readTime: "7 min read",
-    category: "Design",
-    slug: "design-systems-guide",
-  },
-  {
     id: "3",
     title: "Designing guardrails for AI: a layered approach",
-    coverImage: "/images/note-banner.png",
+    coverImage: "/images/ai-governance-banner.png",
     date: "1st Nov 2026",
     readTime: "7 min read",
     category: "Design",
     slug: "ai-guardrails",
+  },
+  {
+    id: "4",
+    title: "Building agentic apps with Microsoft Foundry models",
+    coverImage: "/images/ai-foundry-banner.png",
+    date: "1st Nov 2026",
+    readTime: "8 min read",
+    category: "Dev",
+    slug: "microsoft-foundry-agents",
+  },
+  {
+    id: "5",
+    title: "Design tokens: the contract between design and code",
+    coverImage: "/images/design-tokens-banner.jpg",
+    date: "1st Nov 2026",
+    readTime: "5 min read",
+    category: "Design",
+    slug: "design-tokens",
+  },
+  {
+    id: "6",
+    title: "Accessibility is a design decision: designing for WCAG 2.2",
+    coverImage: "/images/accessibility-banner.png",
+    date: "1st Nov 2026",
+    readTime: "6 min read",
+    category: "Design",
+    slug: "accessible-design-wcag-2-2",
   },
 ];
 

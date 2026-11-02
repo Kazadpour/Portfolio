@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Image from "next/image";
 import Link from "next/link";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -147,7 +147,7 @@ export default function Projects() {
               isLight ? "text-gray-700" : "text-neutral-400"
             }`}
           >
-            Projects and ideas I've worked on
+            Projects and ideas I&apos;ve worked on
           </p>
         </motion.div>
 
@@ -415,7 +415,7 @@ export default function Projects() {
                   isLight ? "text-gray-700" : "text-neutral-400"
                 }`}
               >
-                Have an exciting project idea? Let's collaborate and bring it to
+                Have an exciting project idea? Let&apos;s collaborate and bring it to
                 life together!
               </p>
               <Link href="/contact">

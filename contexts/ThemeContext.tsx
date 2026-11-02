@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useSyncExternalStore } from "react";
 
 type Theme = "light" | "dark";
 
@@ -14,28 +14,35 @@ const ThemeContext = createContext<ThemeContextType>({
   toggleTheme: () => {},
 });
 
+const listeners = new Set<() => void>();
+
+function subscribe(listener: () => void) {
+  listeners.add(listener);
+  window.addEventListener("storage", listener);
+  return () => {
+    listeners.delete(listener);
+    window.removeEventListener("storage", listener);
+  };
+}
+
+function getSnapshot(): Theme {
+  // Check if there's a saved theme preference
+  const savedTheme = localStorage.getItem("theme") as Theme | null;
+  if (savedTheme) return savedTheme;
+  // Check system preference
+  return window.matchMedia("(prefers-color-scheme: dark)").matches
+    ? "dark"
+    : "light";
+}
+
+function getServerSnapshot(): Theme {
+  return "dark";
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
-  const [mounted, setMounted] = useState(false);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
   useEffect(() => {
-    setMounted(true);
-    // Check if there's a saved theme preference
-    const savedTheme = localStorage.getItem("theme") as Theme | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference
-      const prefersDark = window.matchMedia(
-        "(prefers-color-scheme: dark)"
-      ).matches;
-      setTheme(prefersDark ? "dark" : "light");
-    }
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
-
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");
@@ -44,11 +51,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
       root.classList.remove("dark");
       root.style.colorScheme = "light";
     }
-    localStorage.setItem("theme", theme);
-  }, [theme, mounted]);
+  }, [theme]);
 
   const toggleTheme = () => {
-    setTheme((prev) => (prev === "dark" ? "light" : "dark"));
+    localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
+    listeners.forEach((listener) => listener());
   };
 
   return (

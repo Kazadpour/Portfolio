@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useTheme } from "@/contexts/ThemeContext";
 
@@ -24,14 +24,14 @@ export default function WorkTogether() {
                 isLight ? "text-black" : "text-white"
               }`}
             >
-              Let's Work Together
+              Let&apos;s Work Together
             </h2>
             <p
               className={`text-lg md:text-xl ${
                 isLight ? "text-gray-700" : "text-neutral-400"
               }`}
             >
-              Have a project in mind or want to collaborate? I'd love to hear
+              Have a project in mind or want to collaborate? I&apos;d love to hear
               from you.
             </p>
           </div>
