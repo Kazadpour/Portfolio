@@ -7,6 +7,17 @@ import { useTheme } from "@/contexts/ThemeContext";
 
 const works = [
   {
+    id: 0,
+    title: "Taajir",
+    description: "AI agents that optimize ecommerce merchandising, with a human in the loop",
+    type: "browser" as const,
+    image: "/images/Taajir Cover.svg",
+    link: "/projects/taajir",
+    tags: ["Next.js", "Azure OpenAI", "AI Agents"],
+    logo: "/images/LondonDrugs.png",
+    secondaryLogo: null,
+  },
+  {
     id: 1,
     title: "Object Formatter",
     description: "ML-powered web app for formatting data objects",

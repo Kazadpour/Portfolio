@@ -25,6 +25,36 @@ interface ProjectData {
 }
 
 const projectsData: Record<string, ProjectData> = {
+  taajir: {
+    title: "Taajir",
+    emoji: "🐪",
+    tagline: "An agentic merchandising platform that analyzes, applies, and verifies ecommerce improvements with a human in the loop",
+    coverImage: "/images/Taajir Cover.svg",
+    logo: "/images/LondonDrugs.png",
+    techStack: ["Next.js", "TypeScript", "Node.js", "Azure OpenAI", "Azure AI Foundry", "Kibo Commerce", "Azure App Service", "Azure Blob Storage", "Application Insights", "Entra ID", "Key Vault", "Bicep", "GitHub Actions", "Tailwind CSS", "shadcn/ui"],
+    sections: [
+      {
+        title: "Overview",
+        content: "Taajir (تاجر — \"merchant\" in Arabic, Urdu, and Persian) is an AI-powered merchandising platform I built at London Drugs for our Kibo Commerce storefront. Keeping a category in good shape means tuning search synonyms, SEO copy, facets, sort order, redirects, boost and bury rules, image alt text, and more — work that was slow, repetitive, and spread across many screens in the Kibo admin.\n\nTaajir turns that into a single guided run. A merchandiser picks a category, a team of 11 specialist AI agents analyzes it in parallel, and the merchandiser reviews every recommendation before anything is written back to the store. Taajir then applies the approved changes and checks that they actually show up on the storefront. It went into production in June 2026 as a net-new system and is used by our Ecommerce Specialists.",
+      },
+      {
+        title: "Tech Stack",
+        content: "The web app is built with Next.js (App Router) and TypeScript, styled with Tailwind CSS v4 and shadcn/ui on a token-based design system with light and dark themes. The merchandising engine is a set of Node.js modules that talk to the Kibo Commerce REST and storefront search APIs, and to Azure OpenAI through Azure AI Foundry.\n\nIt runs on Azure App Service, with infrastructure defined in Bicep and deployed through GitHub Actions. Sign-in uses Entra ID, secrets live in Azure Key Vault, run artifacts are stored in Azure Blob Storage, and Application Insights provides telemetry. Live progress streams to the browser over Server-Sent Events.\n\nThe project started as a Claude Code agent team — 16 agent definitions orchestrating the full workflow — before I turned it into a standalone web app the business could use every day.",
+      },
+      {
+        title: "Challenges",
+        content: "The hardest part was trust. An AI that writes directly to a live ecommerce catalog has to be safe by design, not by hope. Analysis agents could never be allowed to write, certain fields like product names, slugs, pricing, and inventory had to be off-limits entirely, and every change needed a way back.\n\nThe second challenge was the Kibo API itself. Some operations weren't available to our API credentials, some facet types can't be updated in place, and search-related changes take several minutes to reach the storefront index. Agents also produced plausible-looking payloads that Kibo rejected, so model output couldn't be passed straight through.\n\nFinally, there was model choice and quality. The agents were first designed around Claude and later moved to GPT models on Azure OpenAI. An independent test pass with a black-box harness surfaced 17 real issues across 8 of the 11 agents after the migration, which shaped a lot of the hardening work.",
+      },
+      {
+        title: "Solution",
+        content: "Every run follows the same four phases: Analyze → Review → Apply → Verify. In Analyze, Taajir pulls the category's products, attributes, and search configuration, slices the data per area, and runs 11 specialists — Synonyms, SEO, Boost/Bury, Facets, Sort, Suggest, Redirects, Inventory, Images, Cross-sell, and Structure. Lighter agents run in parallel on a smaller model tier while heavier ones like SEO and Facets use the full model.\n\nIn Review, the merchandiser checks recommendations in the browser and saves an execution plan. The plan stores only their selections; the actual API payloads stay with the analysis results and are re-joined at apply time, so nothing can be edited into the plan by accident. Apply requires an explicit typed confirmation (with a stricter approver gate in production), snapshots the current state of every item first, and writes through a deduplicating, field-stripping action layer. Verify then checks each change against the storefront search API and live pages and groups results into Verified, Propagating, Failed, or Manual. Any applied run can be rolled back from its snapshots.\n\nAround that core I added normalization layers to correct model output before it reaches Kibo, a strict Content Security Policy with nonces, hardened response headers, and fixes for findings from security scans. I also built a cart admin tool for clearing stuck customer carts.",
+      },
+      {
+        title: "Impact",
+        content: "Taajir turned category optimization from a manual, multi-screen chore into a single guided run that takes minutes to analyze and gives a clear, plain-language handoff when it's done — Done, Not Done, and Manual — that any stakeholder can read.\n\nThe safety model held up under testing: rollback restored every applied item in under a second, and the issues the test harness caught were fixed through normalization and prompt hardening before launch. Taajir moved from UAT to production through the formal change advisory process and is now part of the ecommerce team's workflow.\n\nThis was my most ambitious AI project so far. It taught me that the value of agentic systems in the enterprise comes as much from the guardrails — human checkpoints, snapshots, verification, and honest reporting — as from the models themselves.",
+      },
+    ],
+  },
   "object-formatter": {
     title: "Object Formatter",
     emoji: "🧩",
